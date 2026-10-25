@@ -62,7 +62,7 @@ a{color:inherit}
 @keyframes pop{0%{opacity:0;transform:scale(0)}65%{opacity:1;transform:scale(1.5)}100%{opacity:1;transform:scale(1)}}
 
 /* ---------- radar hero ---------- */
-.sky{position:relative;background:var(--sky);color:var(--sky-ink);overflow:hidden;padding-bottom:26px}
+.sky{position:relative;background:var(--sky);color:var(--sky-ink);overflow:hidden}
 .sky::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:linear-gradient(90deg,transparent,var(--cyan),transparent);opacity:.6}
 #radar{position:absolute;inset:0;width:100%;height:100%;display:block}
 .sky .wrap{position:relative;z-index:1}
@@ -87,7 +87,7 @@ h1{font-size:1.95rem;line-height:1.15;font-weight:600;margin:0;letter-spacing:-.
 .intro{margin:0 0 20px;max-width:60ch;color:#DCE7F4}
 
 /* ticker */
-.ticker{position:relative;z-index:1;overflow:hidden;white-space:nowrap;border-block:1px solid rgba(24,214,220,.28);background:rgba(4,14,30,.45);margin:0 0 22px;font-size:.88rem;padding:9px 0}
+.ticker{position:relative;z-index:1;overflow:hidden;white-space:nowrap;border-block:1px solid rgba(24,214,220,.28);background:rgba(4,14,30,.45);margin:24px 0 0;font-size:.88rem;padding:9px 0}
 .ticker-track{display:inline-flex;animation:tick 34s linear infinite}
 [dir="rtl"] .ticker-track{animation-name:tickr}
 .ticker span{display:inline-flex;align-items:center;gap:6px;padding-inline:18px;color:#DCE7F4}
@@ -161,6 +161,67 @@ section.block{margin-top:36px}
 .langs{margin:0;font-size:.97rem}
 footer{margin:44px 0 0;padding-bottom:40px;font-size:.84rem;color:var(--ink-2);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
+/* ---------- page texture ---------- */
+body{background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:44px 44px}
+:root{--grid:rgba(11,37,69,.035)}
+@media (prefers-color-scheme: dark){:root{--grid:rgba(62,230,236,.04)}}
+
+/* ---------- scroll reveal ---------- */
+.sr{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1);transition-delay:var(--d,0s)}
+.sr.in{opacity:1;transform:none}
+.no-sr .sr{opacity:1;transform:none}
+
+/* ---------- section labels ---------- */
+.sec-label{display:flex;align-items:center;gap:10px;margin:0 0 6px;font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);direction:ltr}
+[dir="rtl"] .sec-label{flex-direction:row-reverse}
+.sec-label .num{font-variant-numeric:tabular-nums;color:var(--cyan)}
+.sec-label .rule{flex:1;height:1px;background:linear-gradient(90deg,var(--cyan),var(--line) 40%,transparent);transform:scaleX(0);transform-origin:left;transition:transform 1s .2s cubic-bezier(.2,.8,.2,1)}
+[dir="rtl"] .sec-label .rule{transform-origin:right;background:linear-gradient(270deg,var(--cyan),var(--line) 40%,transparent)}
+.sec-label.in .rule,.no-sr .sec-label .rule{transform:scaleX(1)}
+.sec-label .dot{width:6px;height:6px;border-radius:50%;background:var(--cyan);box-shadow:0 0 8px var(--cyan)}
+
+/* ---------- card interaction ---------- */
+@media (hover:hover){
+  .strip:hover{transform:translateY(-2px);box-shadow:0 0 0 1px rgba(24,214,220,.35),0 10px 26px rgba(11,37,69,.12)}
+  .stat{transition:transform .25s,box-shadow .25s}
+  .stat:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(11,37,69,.10)}
+}
+.strip.sr{transition:opacity .7s ease var(--d,0s),transform .5s cubic-bezier(.2,.8,.2,1),box-shadow .25s}
+.tags li{cursor:default;transition:background .2s,border-color .2s,color .2s}
+.tags li:hover{background:var(--code-bg);border-color:var(--cyan)}
+
+/* ---------- timeline ---------- */
+.tl{position:relative;list-style:none;margin:6px 0 0;padding:0 0 0 34px}
+[dir="rtl"] .tl{padding:0 34px 0 0}
+.tl::before,.tl-fill{content:"";position:absolute;top:6px;bottom:6px;inset-inline-start:11px;width:2px;background:repeating-linear-gradient(180deg,var(--line) 0 10px,transparent 10px 16px)}
+.tl-fill{background:linear-gradient(180deg,var(--accent),var(--cyan));bottom:auto;height:0;transition:height .15s linear}
+.tl-plane{position:absolute;inset-inline-start:0;top:0;width:24px;height:24px;color:var(--cyan);transform:translateY(-6px);transition:top .15s linear;filter:drop-shadow(0 0 6px rgba(24,214,220,.6))}
+.tl li{position:relative;padding:0 0 20px}
+.tl li:last-child{padding-bottom:0}
+.tl li::before{content:"";position:absolute;inset-inline-start:-27px;top:7px;width:10px;height:10px;border-radius:50%;background:var(--bg);border:2px solid var(--line);transition:border-color .3s,background .3s,box-shadow .3s}
+.tl li.on::before{border-color:var(--cyan);background:var(--cyan);box-shadow:0 0 0 4px rgba(24,214,220,.18)}
+.tl .yr{display:inline-block;font-size:.8rem;font-weight:600;font-variant-numeric:tabular-nums;color:var(--accent);direction:ltr}
+.tl strong{display:block;font-weight:600;font-size:.98rem;line-height:1.3}
+.tl span.at{display:block;font-size:.87rem;color:var(--ink-2)}
+.tl .code{display:inline-block;margin-inline-start:8px;padding:1px 7px;border-radius:5px;font-size:.7rem;background:var(--code-bg);border:0}
+
+/* ---------- desktop ---------- */
+@media (min-width:900px){
+  .wrap{max-width:980px;padding:0 32px}
+  .sky .hero-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:40px;align-items:end}
+  .sky .hero-grid .intro{margin-bottom:6px}
+  .actions{align-self:center}
+  h1{font-size:2.4rem}
+  .photo-wrap{width:140px;height:140px}
+  .photo{width:104px;height:104px}
+  .stats{grid-template-columns:repeat(3,1fr);gap:16px}
+  .stat{padding:18px 18px}
+  .stat strong{font-size:2.2rem}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;margin-top:44px}
+  .two-col section.block{margin-top:0}
+  .certs{column-gap:28px}
+}
+
 @media (max-width:380px){
   .hero{flex-direction:column;align-items:flex-start}
   h1{font-size:1.7rem}
@@ -168,6 +229,7 @@ footer{margin:44px 0 0;padding-bottom:40px;font-size:.84rem;color:var(--ink-2);d
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
+  .sr{opacity:1;transform:none}
 }
 @media print{.lang,.actions,.ticker,#radar,.intro-overlay{display:none}}
 </style>
@@ -208,6 +270,8 @@ footer{margin:44px 0 0;padding-bottom:40px;font-size:.84rem;color:var(--ink-2);d
       </div>
     </div>
 
+    <div class="hero-grid">
+    <div>
     <div class="hero reveal" style="--d:.1s">
       <div class="photo-wrap" aria-hidden="true">
         <span class="dash-ring"></span>
@@ -229,12 +293,9 @@ footer{margin:44px 0 0;padding-bottom:40px;font-size:.84rem;color:var(--ink-2);d
     </div>
 
     <p class="intro reveal" style="--d:.2s" data-t="intro"></p>
-  </div>
+    </div>
 
-  <div class="ticker reveal" style="--d:.3s" aria-hidden="true"><div class="ticker-track" id="ticker"></div></div>
-
-  <div class="wrap">
-    <nav class="actions reveal" style="--d:.4s" aria-label="Contact">
+    <nav class="actions reveal" style="--d:.3s" aria-label="Contact">
       <a class="btn primary" href="bassam.vcf" download="Bassam_J_Al_Eter.vcf">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="9" cy="8" r="4"/><path d="M2 21c0-3.9 3.1-7 7-7s7 3.1 7 7"/><path d="M19 8v6M16 11h6"/></svg>
         <span data-t="save"></span>
@@ -252,7 +313,10 @@ footer{margin:44px 0 0;padding-bottom:40px;font-size:.84rem;color:var(--ink-2);d
         <span data-t="cv"></span>
       </a>
     </nav>
+    </div>
   </div>
+
+  <div class="ticker reveal" style="--d:.4s" aria-hidden="true"><div class="ticker-track" id="ticker"></div></div>
 </header>
 
 <div class="wrap">
@@ -260,19 +324,32 @@ footer{margin:44px 0 0;padding-bottom:40px;font-size:.84rem;color:var(--ink-2);d
   <div class="centerline" aria-hidden="true"></div>
 
   <main>
-    <h2 data-t="whatIDo"></h2>
-    <div class="strips" id="strips"></div>
-
-    <section class="block" aria-labelledby="certs-h">
-      <h2 id="certs-h" data-t="certsTitle"></h2>
-      <ul class="certs" id="certs"></ul>
-      <button class="more" id="more" type="button"></button>
+    <section aria-labelledby="do-h">
+      <p class="sec-label sr" aria-hidden="true"><span class="num">01</span><span class="dot"></span><span data-t="lblDo"></span><span class="rule"></span></p>
+      <h2 id="do-h" class="sr" data-t="whatIDo"></h2>
+      <div class="strips" id="strips"></div>
     </section>
 
-    <section class="block" aria-labelledby="langs-h">
-      <h2 id="langs-h" data-t="langsTitle"></h2>
-      <p class="langs" data-t="langs"></p>
+    <section class="block" aria-labelledby="tl-h">
+      <p class="sec-label sr" aria-hidden="true"><span class="num">02</span><span class="dot"></span><span data-t="lblTl"></span><span class="rule"></span></p>
+      <h2 id="tl-h" class="sr" data-t="tlTitle"></h2>
+      <ol class="tl" id="tl"></ol>
     </section>
+
+    <div class="two-col">
+      <section class="block" aria-labelledby="certs-h">
+        <p class="sec-label sr" aria-hidden="true"><span class="num">03</span><span class="dot"></span><span data-t="lblCerts"></span><span class="rule"></span></p>
+        <h2 id="certs-h" class="sr" data-t="certsTitle"></h2>
+        <ul class="certs" id="certs"></ul>
+        <button class="more" id="more" type="button"></button>
+      </section>
+
+      <section class="block" aria-labelledby="langs-h">
+        <p class="sec-label sr" aria-hidden="true"><span class="num">04</span><span class="dot"></span><span data-t="lblLangs"></span><span class="rule"></span></p>
+        <h2 id="langs-h" class="sr" data-t="langsTitle"></h2>
+        <p class="langs sr" data-t="langs"></p>
+      </section>
+    </div>
   </main>
 
   <footer>
@@ -337,6 +414,17 @@ en: {
   whatIDo: "What I do", certsTitle: "Certifications and training",
   showAll: n => `Show all ${n}`, showLess: "Show fewer",
   langsTitle: "Languages", langs: "Arabic, English, French",
+  lblDo: "Domains", lblTl: "Flight path", lblCerts: "Credentials", lblLangs: "Comms",
+  tlTitle: "Career so far",
+  timeline: [
+    ["2018","AVN","Air Traffic Controller","Lebanese Air Force"],
+    ["2020","AVN","Airfield Operations Officer","Lebanese Air Force · Keesler AFB course, USA"],
+    ["2022","MEC","Mechatronics Engineer, NAVAIDS project","Aviation Consulting Services, Beirut"],
+    ["2023","MEC","BSc in Mechatronics Engineering","AUST · Liaison Officer, UNIFIL HQ"],
+    ["2024","EDU","Teacher, vocational training","SUC College · Co-founded Brainscope"],
+    ["2025","AI","AI Automation Specialist","USCHEED"],
+    ["2026","AI","Diploma in AI Engineering","Saint Joseph University (USJ), ESIB"]
+  ],
   roles: [
     { code:"AVN", title:"Aviation and airfield operations", sub:"Airfield Operations Officer, available for aviation consulting",
       items:[
@@ -401,6 +489,17 @@ ar: {
   whatIDo: "مجالات عملي", certsTitle: "الشهادات والتدريب",
   showAll: n => `عرض الكل (${n})`, showLess: "عرض أقل",
   langsTitle: "اللغات", langs: "العربية، الإنجليزية، الفرنسية",
+  lblDo: "Domains", lblTl: "Flight path", lblCerts: "Credentials", lblLangs: "Comms",
+  tlTitle: "مسيرتي حتى الآن",
+  timeline: [
+    ["2018","AVN","مراقب جوي","القوات الجوية اللبنانية"],
+    ["2020","AVN","ضابط عمليات المطار","القوات الجوية اللبنانية · دورة في قاعدة كيسلر الجوية، الولايات المتحدة"],
+    ["2022","MEC","مهندس ميكاترونكس، مشروع أنظمة الملاحة الجوية","Aviation Consulting Services، بيروت"],
+    ["2023","MEC","بكالوريوس في هندسة الميكاترونكس","AUST · ضابط ارتباط، مقر قيادة اليونيفيل"],
+    ["2024","EDU","مدرّس في التدريب المهني","SUC College · تأسيس Brainscope"],
+    ["2025","AI","أخصائي أتمتة بالذكاء الاصطناعي","USCHEED"],
+    ["2026","AI","دبلوم في هندسة الذكاء الاصطناعي","جامعة القديس يوسف (USJ)، ESIB"]
+  ],
   roles: [
     { code:"AVN", title:"الطيران وعمليات المطارات", sub:"ضابط عمليات مطار، متاح لتقديم الاستشارات في مجال الطيران",
       items:[
@@ -465,6 +564,17 @@ fr: {
   whatIDo: "Ce que je fais", certsTitle: "Certifications et formations",
   showAll: n => `Tout afficher (${n})`, showLess: "Afficher moins",
   langsTitle: "Langues", langs: "Arabe, anglais, français",
+  lblDo: "Domains", lblTl: "Flight path", lblCerts: "Credentials", lblLangs: "Comms",
+  tlTitle: "Parcours",
+  timeline: [
+    ["2018","AVN","Contrôleur aérien","Armée de l'air libanaise"],
+    ["2020","AVN","Officier des opérations aéroportuaires","Armée de l'air libanaise · cours à la base de Keesler, États-Unis"],
+    ["2022","MEC","Ingénieur mécatronique, projet NAVAIDS","Aviation Consulting Services, Beyrouth"],
+    ["2023","MEC","Licence (BSc) en génie mécatronique","AUST · Officier de liaison, QG de la FINUL"],
+    ["2024","EDU","Enseignant en formation professionnelle","SUC College · cofondation de Brainscope"],
+    ["2025","AI","Spécialiste en automatisation IA","USCHEED"],
+    ["2026","AI","Diplôme en ingénierie de l'IA","Université Saint-Joseph (USJ), ESIB"]
+  ],
   roles: [
     { code:"AVN", title:"Aviation et opérations aéroportuaires", sub:"Officier des opérations aéroportuaires, disponible pour du conseil en aviation",
       items:[
@@ -527,17 +637,17 @@ fr: {
 const EXTRA = {
   en: {
     ticker: ["Status: available for aviation consulting","Base: Lebanon","Now studying: AI Engineering, USJ","Focus: AI automation, airfield safety, technical training","Languages: Arabic, English, French"],
-    stats: ["years in aviation","certifications","languages"],
+    stats: ["years in aviation","certifications","fields of work"],
     skip: "Skip intro"
   },
   ar: {
     ticker: ["الحالة: متاح للاستشارات في مجال الطيران","المقر: لبنان","أدرس حالياً: هندسة الذكاء الاصطناعي، جامعة القديس يوسف","التركيز: أتمتة الذكاء الاصطناعي، سلامة المطارات، التدريب التقني","اللغات: العربية، الإنجليزية، الفرنسية"],
-    stats: ["سنوات في الطيران","شهادة","لغات"],
+    stats: ["سنوات في الطيران","شهادة","مجالات عمل"],
     skip: "تخطي المقدمة"
   },
   fr: {
     ticker: ["Statut : disponible pour du conseil en aviation","Base : Liban","Études en cours : ingénierie de l'IA, USJ","Domaines : automatisation IA, sécurité aéroportuaire, formation technique","Langues : arabe, anglais, français"],
-    stats: ["ans dans l'aviation","certifications","langues"],
+    stats: ["ans dans l'aviation","certifications","domaines d'activité"],
     skip: "Passer l'intro"
   }
 };
@@ -549,7 +659,7 @@ const AVIATION_SINCE = 2018;
 const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const chev = '<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>';
-let lang = "en", certsOpen = false, openCodes = new Set();
+let lang = "en", certsOpen = false, openCodes = new Set(["AVN"]);
 
 function renderStrips(t){
   const box = document.getElementById("strips");
@@ -560,7 +670,7 @@ function renderStrips(t){
     const tags = r.tags ? `<ul class="tags">${r.tags.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>` : "";
     const links = (r.links && BRAINSCOPE_LINKS.length) ? `<div class="links">${BRAINSCOPE_LINKS.map(l=>`<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)}</a>`).join("")}</div>` : "";
     const open = openCodes.has(r.code);
-    return `<div class="strip ${r.cls||""}">
+    return `<div class="strip sr ${r.cls||""}" style="--d:${(t.roles.indexOf(r)*0.07).toFixed(2)}s">
       <button class="strip-head" type="button" aria-expanded="${open}" aria-controls="${id}" data-code="${r.code}">
         <span class="code">${r.code}</span>
         <span class="strip-title"><strong>${esc(r.title)}</strong><span>${esc(r.sub)}</span></span>
@@ -578,6 +688,35 @@ function renderStrips(t){
   }));
 }
 
+const PLANE = '<svg class="tl-plane" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2c.8 0 1.3.9 1.3 2v5.2l7.7 4.4v2l-7.7-2.3v4.4l2.2 1.6V21L12 20.2 8.5 21v-1.7l2.2-1.6v-4.4L3 15.6v-2l7.7-4.4V4c0-1.1.5-2 1.3-2z" transform="rotate(180 12 12)"/></svg>';
+function renderTimeline(t){
+  document.getElementById("tl").innerHTML = '<span class="tl-fill" aria-hidden="true"></span>' + PLANE +
+    t.timeline.map(([y,c,h,a],i) => `<li class="sr" style="--d:${(i*0.05).toFixed(2)}s"><span class="yr">${esc(y)}</span><span class="code">${esc(c)}</span><strong>${esc(h)}</strong><span class="at">${esc(a)}</span></li>`).join("");
+  updateTimeline();
+}
+/* the plane flies down the timeline as you scroll */
+function updateTimeline(){
+  const tl = document.getElementById("tl"); if(!tl) return;
+  const items = tl.querySelectorAll("li"), fill = tl.querySelector(".tl-fill"), plane = tl.querySelector(".tl-plane");
+  if(!items.length) return;
+  const box = tl.getBoundingClientRect(), line = window.innerHeight * 0.65;
+  const first = items[0].offsetTop + 6, lastTop = items[items.length-1].offsetTop + 6;
+  const y = reduce ? lastTop : Math.max(first, Math.min(lastTop, line - box.top));
+  fill.style.top = first + "px"; fill.style.height = (y - first) + "px";
+  plane.style.top = (y - 6) + "px";
+  items.forEach(li => li.classList.toggle("on", li.offsetTop + 6 <= y + 1));
+}
+let tlTick = false;
+window.addEventListener("scroll", () => { if(tlTick) return; tlTick = true; requestAnimationFrame(() => { tlTick = false; updateTimeline(); }); }, {passive:true});
+window.addEventListener("resize", updateTimeline);
+
+/* fade sections in as they scroll into view */
+const srIO = (!reduce && "IntersectionObserver" in window)
+  ? new IntersectionObserver(es => es.forEach(x => { if(x.isIntersecting){ x.target.classList.add("in"); srIO.unobserve(x.target); } }), {threshold:.12, rootMargin:"0px 0px -6% 0px"})
+  : null;
+if(!srIO) document.documentElement.classList.add("no-sr");
+function watchReveal(){ if(srIO) document.querySelectorAll(".sr:not(.in)").forEach(el => srIO.observe(el)); }
+
 function renderCerts(t){
   const list = certsOpen ? CERTS : CERTS.slice(0, CERTS_SHOWN);
   document.getElementById("certs").innerHTML = list.map(([n,by,y]) =>
@@ -590,7 +729,7 @@ function renderTicker(e){
   document.getElementById("ticker").innerHTML = items + items;
 }
 
-const STAT_VALUES = () => [{n: new Date().getFullYear() - AVIATION_SINCE, suf:"+"}, {n: CERTS.length, suf:""}, {n: 3, suf:""}];
+const STAT_VALUES = () => [{n: new Date().getFullYear() - AVIATION_SINCE, suf:"+"}, {n: CERTS.length, suf:""}, {n: TEXT.en.roles.length, suf:""}];
 let statsCounted = false;
 function renderStats(e){
   const v = STAT_VALUES();
@@ -618,7 +757,7 @@ function setLang(l){
   document.getElementById("wa").href = "https://wa.me/" + CONTACT.phone.replace(/\D/g,"") + "?text=" + encodeURIComponent(CONTACT.whatsappText[l]);
   document.getElementById("mail").href = "mailto:" + CONTACT.email;
   const sk = document.getElementById("skip"); if(sk) sk.textContent = e.skip;
-  renderStrips(t); renderCerts(t); renderTicker(e); renderStats(e);
+  renderStrips(t); renderTimeline(t); renderCerts(t); renderTicker(e); renderStats(e); watchReveal();
   if(location.hash.slice(1) !== l) history.replaceState(null, "", "#" + l);
   if(window.radarResize) radarResize();
 }
