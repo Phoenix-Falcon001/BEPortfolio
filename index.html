@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bassam J. Al Eter</title>
+<meta name="description" content="Bassam J. Al Eter: airfield operations, mechatronics engineering, AI automation and technical teaching. Lebanon.">
+<meta property="og:title" content="Bassam J. Al Eter">
+<meta property="og:description" content="Airfield operations, engineering and AI">
+<meta property="og:url" content="https://bassameter.com">
+<meta name="theme-color" content="#0B2545">
+<meta property="og:image" content="https://bassameter.com/og-image.png">
+<link rel="icon" href="bje-icon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFFFFF; --surface:#F3F7FC; --ink:#0B2545; --ink-2:#4A5D78;
+  --line:#D5E0EE; --accent:#1E88E5; --accent-ink:#FFFFFF; --accent-soft:#E3F0FC;
+  --brainscope:#6A2CFF;
+  --cyan:#18D6DC; --code-bg:#E3F9FA; --code-ink:#0B2545;
+  --font:"IBM Plex Sans","IBM Plex Sans Arabic",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#071528; --surface:#0D2140; --ink:#EAF2FB; --ink-2:#9DB2CC;
+    --line:#1D3557; --accent:#4AA3F0; --accent-ink:#071528; --accent-soft:#12305A;
+    --brainscope:#9B74FF;
+    --cyan:#3EE6EC; --code-bg:#0E3442; --code-ink:#3EE6EC;
+    color-scheme: dark;
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.55}
+[dir="rtl"] body{line-height:1.75}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+
+.wrap{max-width:600px;margin:0 auto;padding:20px 20px 48px}
+
+/* language switch */
+.top{display:flex;justify-content:space-between;align-items:center}
+.mark{display:block;height:40px;width:40px}
+.mark img{height:40px;width:40px;display:block}
+.lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:3px;gap:2px}
+.lang button{font:inherit;font-size:.85rem;font-weight:500;border:0;background:none;color:var(--ink-2);padding:5px 12px;border-radius:999px;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--cyan);color:#0B2545}
+
+/* hero */
+.hero{display:flex;gap:18px;align-items:center;margin:28px 0 22px}
+.photo{position:relative;width:92px;height:92px;flex:none;border-radius:50%;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;font-weight:600;font-size:1.9rem;overflow:hidden;border:3px solid var(--bg);box-shadow:0 0 0 2px var(--accent)}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+h1{font-size:1.95rem;line-height:1.15;font-weight:600;margin:0;letter-spacing:-.01em}
+[dir="rtl"] h1{letter-spacing:0}
+.headline{margin:6px 0 0;color:var(--ink-2);font-size:1.02rem}
+.place{margin:4px 0 0;font-size:.9rem;color:var(--ink-2);display:flex;align-items:center;gap:6px}
+.intro{margin:0 0 22px;max-width:60ch}
+
+/* actions */
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;min-height:50px;padding:10px 14px;border-radius:12px;font-weight:500;font-size:.97rem;text-decoration:none;border:1px solid var(--line);background:var(--bg);color:var(--ink);text-align:center}
+.btn svg{width:20px;height:20px;flex:none}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn:active{transform:translateY(1px)}
+
+/* runway centerline */
+.centerline{height:4px;margin:34px 0 28px;background:repeating-linear-gradient(90deg,var(--line) 0 28px,transparent 28px 44px);border-radius:2px}
+[dir="rtl"] .centerline{background:repeating-linear-gradient(270deg,var(--line) 0 28px,transparent 28px 44px)}
+
+h2{font-size:1.15rem;font-weight:600;margin:0 0 14px}
+
+/* flight strips */
+.strips{display:flex;flex-direction:column;gap:10px}
+.strip{border:1px solid var(--line);border-radius:10px;background:var(--bg);overflow:hidden;border-inline-start:6px solid var(--accent)}
+.strip.bsc{border-inline-start-color:var(--brainscope)}
+.strip-head{all:unset;box-sizing:border-box;width:100%;display:grid;grid-template-columns:64px 1fr 28px;align-items:center;cursor:pointer;min-height:70px}
+.strip-head:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.code{align-self:stretch;display:grid;place-items:center;font-weight:600;font-size:.95rem;letter-spacing:.06em;color:var(--code-ink);background:var(--code-bg);border-inline-end:1px solid var(--line);font-variant-numeric:tabular-nums;direction:ltr}
+.strip.bsc .code{color:var(--brainscope);background:var(--surface)}
+.strip-title{padding:12px 14px}
+.strip-title strong{display:block;font-weight:600;font-size:1.02rem;line-height:1.3}
+.strip-title span{display:block;font-size:.88rem;color:var(--ink-2);margin-top:2px}
+.chev{width:18px;height:18px;transition:transform .2s ease;color:var(--ink-2)}
+.strip-head[aria-expanded="true"] .chev{transform:rotate(180deg)}
+.panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .25s ease}
+.panel.open{grid-template-rows:1fr}
+.panel>div{overflow:hidden}
+.panel-body{padding:4px 16px 18px;border-top:1px dashed var(--line);margin:0 0 0}
+.item{padding:14px 0 0}
+.item h3{font-size:.98rem;font-weight:600;margin:0}
+.item .meta{font-size:.85rem;color:var(--ink-2);margin:1px 0 0}
+.item p{margin:6px 0 0;font-size:.95rem;max-width:62ch}
+.note{margin:16px 0 0;padding:12px 14px;background:var(--accent-soft);border-radius:8px;font-size:.93rem}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin:16px 0 0;padding:0;list-style:none}
+.tags li{font-size:.82rem;padding:4px 10px;border-radius:999px;background:var(--surface);border:1px solid var(--line);direction:ltr}
+.links{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 0}
+.links a{font-size:.9rem;font-weight:500;color:var(--brainscope);text-decoration:none;border:1px solid var(--brainscope);padding:6px 12px;border-radius:8px}
+
+/* certifications */
+section.block{margin-top:36px}
+.certs{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.certs li{display:grid;grid-template-columns:1fr auto;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);font-size:.93rem;direction:ltr;text-align:start}
+[dir="rtl"] .certs li{text-align:left}
+.certs .by{color:var(--ink-2);display:block;font-size:.84rem}
+.certs .yr{color:var(--ink-2);font-variant-numeric:tabular-nums;font-size:.88rem}
+.more{all:unset;cursor:pointer;margin-top:12px;font-size:.9rem;font-weight:500;color:var(--accent)}
+.langs{margin:0;font-size:.97rem}
+
+footer{margin-top:44px;font-size:.84rem;color:var(--ink-2);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+@media (max-width:380px){
+  .hero{flex-direction:column;align-items:flex-start}
+  h1{font-size:1.7rem}
+}
+@media (prefers-reduced-motion:reduce){
+  .panel,.chev{transition:none}
+}
+@media print{.lang,.actions{display:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="top">
+    <a class="mark" href="#" aria-label="Bassam J. Al Eter, home" onclick="window.scrollTo({top:0});return false;">
+      <picture>
+        <source srcset="bje-mark-white.svg" media="(prefers-color-scheme: dark)">
+        <img src="bje-mark-navy.svg" alt="BJE logo">
+      </picture>
+    </a>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-lang="en">EN</button>
+      <button type="button" data-lang="ar" lang="ar">عربي</button>
+      <button type="button" data-lang="fr">FR</button>
+    </div>
+  </div>
+
+  <header class="hero">
+    <div class="photo" aria-hidden="true">
+      <!-- Put your photo next to this file and name it photo.jpg -->
+      <img src="photo.jpg" alt="" onerror="this.remove()">
+      <span>BE</span>
+    </div>
+    <div>
+      <h1 id="name"><bdi>Bassam J.&nbsp;Al&nbsp;Eter</bdi></h1>
+      <p class="headline" data-t="headline"></p>
+      <p class="place">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+        <span data-t="location"></span>
+      </p>
+    </div>
+  </header>
+
+  <p class="intro" data-t="intro"></p>
+
+  <nav class="actions" aria-label="Contact">
+    <a class="btn primary" href="bassam.vcf" download="Bassam_J_Al_Eter.vcf">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="9" cy="8" r="4"/><path d="M2 21c0-3.9 3.1-7 7-7s7 3.1 7 7"/><path d="M19 8v6M16 11h6"/></svg>
+      <span data-t="save"></span>
+    </a>
+    <a class="btn" id="wa" href="#" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12a8.5 8.5 0 0 1-12.6 7.4L3 21l1.6-5.2A8.5 8.5 0 1 1 21 12z"/></svg>
+      <span data-t="whatsapp"></span>
+    </a>
+    <a class="btn" id="mail" href="#">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+      <span data-t="email"></span>
+    </a>
+    <a class="btn" href="Bassam_J_Al_Eter_CV.pdf" download>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M4 20h16"/></svg>
+      <span data-t="cv"></span>
+    </a>
+  </nav>
+
+  <div class="centerline" aria-hidden="true"></div>
+
+  <main>
+    <h2 data-t="whatIDo"></h2>
+    <div class="strips" id="strips"></div>
+
+    <section class="block" aria-labelledby="certs-h">
+      <h2 id="certs-h" data-t="certsTitle"></h2>
+      <ul class="certs" id="certs"></ul>
+      <button class="more" id="more" type="button"></button>
+    </section>
+
+    <section class="block" aria-labelledby="langs-h">
+      <h2 id="langs-h" data-t="langsTitle"></h2>
+      <p class="langs" data-t="langs"></p>
+    </section>
+  </main>
+
+  <footer>
+    <span>© <span id="yr"></span> Bassam J. Al Eter</span>
+    <span>bassameter.com</span>
+  </footer>
+</div>
+
+<script>
+/* =====================================================================
+   EDIT YOUR CONTENT HERE
+   - Contact details: CONTACT
+   - Certifications (same in every language): CERTS
+   - Text for each language: TEXT.en / TEXT.ar / TEXT.fr
+   - To add a section later (e.g. UAV), copy one object inside "roles"
+     in all three languages and give it the same code.
+   ===================================================================== */
+
+const CONTACT = {
+  phone: "+96181417207",
+  email: "Bassameter005@gmail.com",
+  whatsappText: {
+    en: "Hello Bassam, I got your card.",
+    ar: "مرحباً بسام، حصلت على بطاقتك.",
+    fr: "Bonjour Bassam, j'ai reçu votre carte."
+  }
+};
+
+/* Brainscope links: add when ready, e.g. { label:"Instagram", url:"https://instagram.com/..." }
+   The links box stays hidden while this list is empty. */
+const BRAINSCOPE_LINKS = [];
+
+const CERTS = [
+  ["Data Science Essentials with Python", "Cisco", "2026"],
+  ["Introduction to Data Science", "Cisco", "2026"],
+  ["Introduction to Cybersecurity", "Cisco Networking Academy", "2026"],
+  ["CTF Mini Training", "Semicolon", "2026"],
+  ["AI Automation Specialist", "Quantum Base, Canada", "2025"],
+  ["Art of Prompting", "Quantum Base", "2025"],
+  ["Elements of AI for Business", "University of Helsinki & MinnaLearn", "2025"],
+  ["Gear-Up Bootcamp", "Eurisko Academy", "2025"],
+  ["Fire Systems Design", "Engineering Solutions", "2025"],
+  ["Project Management", "INJAZ", "2025"],
+  ["Content Creation and Storytelling", "QUAD", "2025"],
+  ["Renewable Energy", "IECD & Liban Cables", "2024"],
+  ["Heavy Machinery Operator Licence", "Bulldozer, excavator, wheel loader, backhoe, basic motor grader", "2024"],
+  ["UiPath RPA", "UiPath", "2023"],
+  ["Port Logistics and Trade Operations", "YEP MED, Escuela de Barcelona", "2023"],
+  ["HCIA-AI", "Huawei", "2022"],
+  ["CCNA 1–4", "AZM University", "2017"]
+];
+const CERTS_SHOWN = 6;
+
+const TEXT = {
+/* ----------------------------- ENGLISH ----------------------------- */
+en: {
+  headline: "Airfield operations, engineering and AI",
+  location: "Lebanon",
+  intro: "I work where aviation, engineering and AI meet: running airfield operations, building automations, and teaching technical skills.",
+  save: "Save contact", whatsapp: "WhatsApp", email: "Email", cv: "Download CV",
+  whatIDo: "What I do", certsTitle: "Certifications and training",
+  showAll: n => `Show all ${n}`, showLess: "Show fewer",
+  langsTitle: "Languages", langs: "Arabic, English, French",
+  roles: [
+    { code:"AVN", title:"Aviation and airfield operations", sub:"Airfield Operations Officer, available for aviation consulting",
+      items:[
+        { h:"Airfield Operations Officer", m:"Lebanese Air Force, 2020 to present",
+          p:"Oversee daily airfield operations and the firefighting unit, run safety inspections, write emergency response plans and enforce safety rules. Operate the DVOR navigation aid and handle first-line maintenance and troubleshooting, escalating to the manufacturer's technicians when needed. Provide technical support for runway and airfield systems." },
+        { h:"Aviation training design",
+          p:"Designed a multi-level air traffic control training and qualification program and an airside vehicle operator certification program, built on ICAO and FAA references. Wrote safety management (SMS) documentation and FOD prevention procedures." },
+        { h:"Mechatronics Engineer, NAVAIDS project", m:"Aviation Consulting Services, Beirut, 2022 to 2024",
+          p:"Supervised installation work and safety standards, deployed and configured VOR, ILS and DME equipment, and implemented grounding procedures." },
+        { h:"Liaison Officer, UNIFIL Headquarters", m:"2023",
+          p:"Coordinated communication between the Lebanese Air Force and UNIFIL for joint activities." },
+        { h:"Air Traffic Controller", m:"Lebanese Air Force, 2018 to 2020",
+          p:"Issued clearances and traffic advisories to pilots in Class D airspace over radio." },
+        { h:"Training",
+          p:"Airfield Operations Officer Course, Keesler Air Force Base, USA (2020). Bachelor of Military Science, Lebanese Army Military Academy (2020). Air Traffic Control qualification, Air Force School (2019)." }
+      ],
+      note:"Available for consulting on airfield operations, aviation safety and SMS, NAVAIDS installation support, and aviation training design." },
+    { code:"MEC", title:"Mechatronics engineering", sub:"Mechatronics Engineer",
+      items:[
+        { h:"BSc in Mechatronics Engineering", m:"American University of Science and Technology (AUST), 2023" },
+        { h:"Diploma in Automotive Mechatronics Systems", m:"Continuous Vocational Training Center, Tripoli, 2024" },
+        { h:"Project Coordinator", m:"Showcase Maintenance Group, 2025",
+          p:"Planned, scheduled and tracked projects, and coordinated between teams and stakeholders." },
+        { h:"Aircraft maintenance training", m:"Lebanese Air Force, 2023",
+          p:"Aircraft mechanical and electrical systems, component replacement and installation, and vibration testing." },
+        { h:"Industrial internships", m:"2023 to 2024",
+          p:"PLC and hydraulic systems (Siemens, FESTO) at Zeeny Steel. Diesel engine assembly and fault diagnosis at Jallad Caterpillar. Remote internship at Adeeb Robotics (USA) building AI training datasets for industrial robots, with exposure to CNC." }
+      ],
+      tags:["AutoCAD","Inventor","MATLAB","Proteus","Arduino","PLC","Robotics","Renewable energy","Fire systems design"] },
+    { code:"AI", title:"AI automation and AI engineering", sub:"AI Automation Specialist, studying AI Engineering",
+      items:[
+        { h:"AI Automation Specialist", m:"USCHEED, 2025 to present",
+          p:"Design and build AI-driven workflows that cut manual work, using prompt engineering, automation tools and system integrations." },
+        { h:"Diploma in AI Engineering", m:"Saint Joseph University (USJ), ESIB, in progress since 2026" },
+        { h:"What I build",
+          p:"Workflow automations with n8n, retrieval-augmented (RAG) chatbot prototypes, and computer vision prototypes, including a FOD detection concept for runway safety." }
+      ],
+      tags:["Python","n8n","UiPath RPA","Prompt engineering","LLM and RAG","C++"] },
+    { code:"EDU", title:"Teaching and training", sub:"Teacher and training designer",
+      items:[
+        { h:"Teacher", m:"SUC College, Continuous Vocational Training, 2024 to present",
+          p:"Automotive engines, automotive electrical systems, AutoCAD and engineering drawing." },
+        { h:"Co-founder and instructor", m:"Brainscope Learning Center",
+          p:"Robotics, AI, programming and academic support." },
+        { h:"Training program design",
+          p:"Build complete training packages, from curriculum and lesson plans to instructor guides and assessments, for military and vocational training." }
+      ] },
+    { code:"BSC", cls:"bsc", title:"Brainscope Learning Center", sub:"Co-founder",
+      items:[
+        { p:"An innovation academy in Zgharta, North Lebanon, teaching robotics, AI and programming alongside academic support, from young learners to young professionals. Think • Create • Lead." },
+        { h:"My role", p:"Curriculum, technical teaching and operations." }
+      ], links:true }
+  ]
+},
+
+/* ------------------------------ ARABIC ------------------------------ */
+ar: {
+  headline: "عمليات المطارات، الهندسة والذكاء الاصطناعي",
+  location: "لبنان",
+  intro: "أعمل حيث يلتقي الطيران بالهندسة والذكاء الاصطناعي: أدير عمليات المطار، أبني حلول الأتمتة، وأدرّس المهارات التقنية.",
+  save: "حفظ جهة الاتصال", whatsapp: "واتساب", email: "البريد الإلكتروني", cv: "تحميل السيرة الذاتية",
+  whatIDo: "مجالات عملي", certsTitle: "الشهادات والتدريب",
+  showAll: n => `عرض الكل (${n})`, showLess: "عرض أقل",
+  langsTitle: "اللغات", langs: "العربية، الإنجليزية، الفرنسية",
+  roles: [
+    { code:"AVN", title:"الطيران وعمليات المطارات", sub:"ضابط عمليات مطار، متاح لتقديم الاستشارات في مجال الطيران",
+      items:[
+        { h:"ضابط عمليات المطار", m:"القوات الجوية اللبنانية، منذ 2020",
+          p:"أشرف على العمليات اليومية للمطار وعلى وحدة الإطفاء، وأجري عمليات التفتيش على السلامة، وأضع خطط الاستجابة للطوارئ وأطبّق قواعد السلامة. أشغّل جهاز الملاحة DVOR وأتولّى الصيانة الأولية ومعالجة الأعطال، وأحيلها إلى فنيي الشركة المصنّعة عند الحاجة. كما أقدّم الدعم الفني لأنظمة المدرج والمطار." },
+        { h:"تصميم برامج التدريب في الطيران",
+          p:"صمّمت برنامجاً متعدد المستويات لتدريب المراقبين الجويين وتأهيلهم، وبرنامجاً لترخيص سائقي المركبات في منطقة حركة الطائرات، استناداً إلى مراجع ICAO وFAA. وأعددت وثائق نظام إدارة السلامة (SMS) وإجراءات الوقاية من الأجسام الغريبة (FOD)." },
+        { h:"مهندس ميكاترونكس، مشروع أنظمة الملاحة الجوية", m:"Aviation Consulting Services، بيروت، 2022 – 2024",
+          p:"أشرفت على أعمال التركيب ومعايير السلامة، وركّبت أجهزة VOR وILS وDME وضبطتها، ونفّذت إجراءات التأريض." },
+        { h:"ضابط ارتباط، مقر قيادة اليونيفيل", m:"2023",
+          p:"نسّقت التواصل بين القوات الجوية اللبنانية وقوات اليونيفيل في الأنشطة المشتركة." },
+        { h:"مراقب جوي", m:"القوات الجوية اللبنانية، 2018 – 2020",
+          p:"أصدرت التصاريح والمعلومات المرورية للطيارين في مجال جوي من الفئة D عبر الاتصالات اللاسلكية." },
+        { h:"التدريب",
+          p:"دورة ضابط عمليات المطار، قاعدة كيسلر الجوية، الولايات المتحدة (2020). إجازة في العلوم العسكرية، المدرسة الحربية (2020). تأهيل في المراقبة الجوية، مدرسة القوات الجوية (2019)." }
+      ],
+      note:"متاح للاستشارات في: عمليات المطارات، السلامة الجوية ونظام إدارة السلامة، دعم تركيب أنظمة الملاحة الجوية، وتصميم برامج التدريب في الطيران." },
+    { code:"MEC", title:"هندسة الميكاترونكس", sub:"مهندس ميكاترونكس",
+      items:[
+        { h:"بكالوريوس في هندسة الميكاترونكس", m:"الجامعة الأميركية للعلوم والتكنولوجيا (AUST)، 2023" },
+        { h:"دبلوم في أنظمة ميكاترونكس السيارات", m:"مركز التدريب المهني المستمر، طرابلس، 2024" },
+        { h:"منسّق مشاريع", m:"Showcase Maintenance Group، 2025",
+          p:"خطّطت المشاريع وجدولتها وتابعت تنفيذها، ونسّقت بين الفرق والجهات المعنية." },
+        { h:"تدريب على صيانة الطائرات", m:"القوات الجوية اللبنانية، 2023",
+          p:"الأنظمة الميكانيكية والكهربائية في الطائرات، استبدال القطع وتركيبها، واختبارات الاهتزاز." },
+        { h:"تدريبات صناعية", m:"2023 – 2024",
+          p:"أنظمة PLC والهيدروليك (Siemens وFESTO) في Zeeny Steel. تجميع محركات الديزل وتشخيص أعطالها في Jallad Caterpillar. تدريب عن بُعد في Adeeb Robotics (الولايات المتحدة) لإعداد بيانات تدريب نماذج الذكاء الاصطناعي للروبوتات الصناعية، مع اطّلاع على تقنيات CNC." }
+      ],
+      tags:["AutoCAD","Inventor","MATLAB","Proteus","Arduino","PLC","Robotics","Renewable energy","Fire systems design"] },
+    { code:"AI", title:"أتمتة وهندسة الذكاء الاصطناعي", sub:"أخصائي أتمتة بالذكاء الاصطناعي، أدرس هندسة الذكاء الاصطناعي",
+      items:[
+        { h:"أخصائي أتمتة بالذكاء الاصطناعي", m:"USCHEED، منذ 2025",
+          p:"أصمّم وأبني مسارات عمل مدعومة بالذكاء الاصطناعي تقلّل العمل اليدوي، باستخدام هندسة الأوامر وأدوات الأتمتة وربط الأنظمة." },
+        { h:"دبلوم في هندسة الذكاء الاصطناعي", m:"جامعة القديس يوسف (USJ)، ESIB، قيد الدراسة منذ 2026" },
+        { h:"ما أبنيه",
+          p:"مسارات أتمتة باستخدام n8n، ونماذج أولية لروبوتات محادثة بتقنية RAG، ونماذج أولية للرؤية الحاسوبية، منها مفهوم لرصد الأجسام الغريبة (FOD) لسلامة المدرج." }
+      ],
+      tags:["Python","n8n","UiPath RPA","Prompt engineering","LLM and RAG","C++"] },
+    { code:"EDU", title:"التعليم والتدريب", sub:"مدرّس ومصمّم برامج تدريبية",
+      items:[
+        { h:"مدرّس", m:"SUC College، التدريب المهني المستمر، منذ 2024",
+          p:"محركات السيارات، الأنظمة الكهربائية في السيارات، AutoCAD والرسم الهندسي." },
+        { h:"شريك مؤسس ومدرّب", m:"Brainscope Learning Center",
+          p:"الروبوتات، الذكاء الاصطناعي، البرمجة، والدعم الأكاديمي." },
+        { h:"تصميم البرامج التدريبية",
+          p:"أعدّ حزم تدريب متكاملة، من المناهج وخطط الدروس إلى أدلة المدرّبين والتقييمات، للتدريب العسكري والمهني." }
+      ] },
+    { code:"BSC", cls:"bsc", title:"Brainscope Learning Center", sub:"شريك مؤسس",
+      items:[
+        { p:"أكاديمية للابتكار في زغرتا، شمال لبنان، تعلّم الروبوتات والذكاء الاصطناعي والبرمجة إلى جانب الدعم الأكاديمي، من الأطفال حتى الشباب المهنيين. Think • Create • Lead" },
+        { h:"دوري", p:"المناهج، التعليم التقني، والعمليات." }
+      ], links:true }
+  ]
+},
+
+/* ------------------------------ FRENCH ------------------------------ */
+fr: {
+  headline: "Opérations aéroportuaires, ingénierie et IA",
+  location: "Liban",
+  intro: "Je travaille là où se rencontrent l'aviation, l'ingénierie et l'IA : je dirige des opérations aéroportuaires, je conçois des automatisations et j'enseigne des compétences techniques.",
+  save: "Enregistrer le contact", whatsapp: "WhatsApp", email: "E-mail", cv: "Télécharger le CV",
+  whatIDo: "Ce que je fais", certsTitle: "Certifications et formations",
+  showAll: n => `Tout afficher (${n})`, showLess: "Afficher moins",
+  langsTitle: "Langues", langs: "Arabe, anglais, français",
+  roles: [
+    { code:"AVN", title:"Aviation et opérations aéroportuaires", sub:"Officier des opérations aéroportuaires, disponible pour du conseil en aviation",
+      items:[
+        { h:"Officier des opérations aéroportuaires", m:"Armée de l'air libanaise, depuis 2020",
+          p:"Je supervise les opérations quotidiennes de l'aérodrome et l'unité de lutte contre l'incendie, je mène les inspections de sécurité, je rédige les plans d'intervention d'urgence et je fais appliquer les règles de sécurité. J'exploite le DVOR et j'en assure la maintenance de premier niveau et le dépannage, en faisant appel aux techniciens du fabricant si nécessaire. J'apporte aussi un soutien technique aux systèmes de la piste et de l'aérodrome." },
+        { h:"Conception de formations aéronautiques",
+          p:"Conception d'un programme de formation et de qualification du contrôle aérien en plusieurs niveaux et d'un programme de certification des conducteurs de véhicules côté piste, fondés sur les références OACI et FAA. Rédaction de la documentation du système de gestion de la sécurité (SGS) et de procédures de prévention des FOD." },
+        { h:"Ingénieur mécatronique, projet NAVAIDS", m:"Aviation Consulting Services, Beyrouth, 2022 – 2024",
+          p:"Supervision des travaux d'installation et des normes de sécurité, déploiement et configuration d'équipements VOR, ILS et DME, et mise en œuvre des procédures de mise à la terre." },
+        { h:"Officier de liaison, quartier général de la FINUL", m:"2023",
+          p:"Coordination de la communication entre l'Armée de l'air libanaise et la FINUL pour les activités conjointes." },
+        { h:"Contrôleur aérien", m:"Armée de l'air libanaise, 2018 – 2020",
+          p:"Délivrance de clairances et d'informations de trafic aux pilotes en espace aérien de classe D, par radiocommunication." },
+        { h:"Formation",
+          p:"Cours d'officier des opérations aéroportuaires, base aérienne de Keesler, États-Unis (2020). Licence en sciences militaires, Académie militaire libanaise (2020). Qualification de contrôleur aérien, École de l'armée de l'air (2019)." }
+      ],
+      note:"Disponible pour du conseil en opérations aéroportuaires, sécurité aérienne et SGS, appui à l'installation de NAVAIDS et conception de formations aéronautiques." },
+    { code:"MEC", title:"Ingénierie mécatronique", sub:"Ingénieur mécatronique",
+      items:[
+        { h:"Licence (BSc) en génie mécatronique", m:"American University of Science and Technology (AUST), 2023" },
+        { h:"Diplôme en systèmes mécatroniques automobiles", m:"Centre de formation professionnelle continue, Tripoli, 2024" },
+        { h:"Coordinateur de projets", m:"Showcase Maintenance Group, 2025",
+          p:"Planification, ordonnancement et suivi des projets, coordination entre les équipes et les parties prenantes." },
+        { h:"Formation en maintenance aéronautique", m:"Armée de l'air libanaise, 2023",
+          p:"Systèmes mécaniques et électriques des aéronefs, remplacement et installation de pièces, essais de vibrations." },
+        { h:"Stages industriels", m:"2023 – 2024",
+          p:"Automates (PLC) et hydraulique (Siemens, FESTO) chez Zeeny Steel. Montage et diagnostic de moteurs diesel chez Jallad Caterpillar. Stage à distance chez Adeeb Robotics (États-Unis) sur des jeux de données d'IA pour la robotique industrielle, avec une initiation à la CNC." }
+      ],
+      tags:["AutoCAD","Inventor","MATLAB","Proteus","Arduino","PLC","Robotics","Renewable energy","Fire systems design"] },
+    { code:"AI", title:"Automatisation et ingénierie de l'IA", sub:"Spécialiste en automatisation IA, étudiant en ingénierie de l'IA",
+      items:[
+        { h:"Spécialiste en automatisation IA", m:"USCHEED, depuis 2025",
+          p:"Je conçois et développe des flux de travail basés sur l'IA qui réduisent les tâches manuelles, grâce au prompt engineering, aux outils d'automatisation et à l'intégration de systèmes." },
+        { h:"Diplôme en ingénierie de l'IA", m:"Université Saint-Joseph (USJ), ESIB, en cours depuis 2026" },
+        { h:"Ce que je construis",
+          p:"Des automatisations avec n8n, des prototypes de chatbots RAG et des prototypes de vision par ordinateur, dont un concept de détection des FOD pour la sécurité des pistes." }
+      ],
+      tags:["Python","n8n","UiPath RPA","Prompt engineering","LLM and RAG","C++"] },
+    { code:"EDU", title:"Enseignement et formation", sub:"Enseignant et concepteur de formations",
+      items:[
+        { h:"Enseignant", m:"SUC College, formation professionnelle continue, depuis 2024",
+          p:"Moteurs automobiles, systèmes électriques automobiles, AutoCAD et dessin technique." },
+        { h:"Cofondateur et formateur", m:"Brainscope Learning Center",
+          p:"Robotique, IA, programmation et soutien scolaire." },
+        { h:"Conception de formations",
+          p:"Je prépare des dossiers de formation complets, du programme et des plans de cours jusqu'aux guides du formateur et aux évaluations, pour la formation militaire et professionnelle." }
+      ] },
+    { code:"BSC", cls:"bsc", title:"Brainscope Learning Center", sub:"Cofondateur",
+      items:[
+        { p:"Une académie de l'innovation à Zgharta, au Liban-Nord, qui enseigne la robotique, l'IA et la programmation, avec du soutien scolaire, des jeunes enfants aux jeunes professionnels. Think • Create • Lead." },
+        { h:"Mon rôle", p:"Programmes, enseignement technique et opérations." }
+      ], links:true }
+  ]
+}
+};
+
+/* ===================== no need to edit below ===================== */
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const chev = '<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>';
+let lang = "en", certsOpen = false, openCodes = new Set();
+
+function renderStrips(t){
+  const box = document.getElementById("strips");
+  box.innerHTML = t.roles.map(r => {
+    const id = "p-" + r.code;
+    const items = r.items.map(i => `<div class="item">${i.h?`<h3>${esc(i.h)}</h3>`:""}${i.m?`<p class="meta">${esc(i.m)}</p>`:""}${i.p?`<p>${esc(i.p)}</p>`:""}</div>`).join("");
+    const note = r.note ? `<p class="note">${esc(r.note)}</p>` : "";
+    const tags = r.tags ? `<ul class="tags">${r.tags.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>` : "";
+    const links = (r.links && BRAINSCOPE_LINKS.length) ? `<div class="links">${BRAINSCOPE_LINKS.map(l=>`<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)}</a>`).join("")}</div>` : "";
+    const open = openCodes.has(r.code);
+    return `<div class="strip ${r.cls||""}">
+      <button class="strip-head" type="button" aria-expanded="${open}" aria-controls="${id}" data-code="${r.code}">
+        <span class="code">${r.code}</span>
+        <span class="strip-title"><strong>${esc(r.title)}</strong><span>${esc(r.sub)}</span></span>
+        ${chev}
+      </button>
+      <div class="panel ${open?"open":""}" id="${id}" role="region"><div><div class="panel-body">${items}${note}${tags}${links}</div></div></div>
+    </div>`;
+  }).join("");
+  box.querySelectorAll(".strip-head").forEach(b => b.addEventListener("click", () => {
+    const c = b.dataset.code, panel = document.getElementById("p-" + c);
+    const now = b.getAttribute("aria-expanded") !== "true";
+    b.setAttribute("aria-expanded", now); panel.classList.toggle("open", now);
+    now ? openCodes.add(c) : openCodes.delete(c);
+  }));
+}
+
+function renderCerts(t){
+  const list = certsOpen ? CERTS : CERTS.slice(0, CERTS_SHOWN);
+  document.getElementById("certs").innerHTML = list.map(([n,by,y]) =>
+    `<li><span>${esc(n)}<span class="by">${esc(by)}</span></span><span class="yr">${y}</span></li>`).join("");
+  const more = document.getElementById("more");
+  more.textContent = certsOpen ? t.showLess : t.showAll(CERTS.length);
+}
+
+function setLang(l){
+  if(!TEXT[l]) l = "en";
+  lang = l;
+  const t = TEXT[l];
+  document.documentElement.lang = l;
+  document.documentElement.dir = l === "ar" ? "rtl" : "ltr";
+  document.querySelectorAll("[data-t]").forEach(el => { el.textContent = t[el.dataset.t]; });
+  document.querySelectorAll(".lang button").forEach(b => b.setAttribute("aria-pressed", b.dataset.lang === l));
+  document.getElementById("wa").href = "https://wa.me/" + CONTACT.phone.replace(/\D/g,"") + "?text=" + encodeURIComponent(CONTACT.whatsappText[l]);
+  document.getElementById("mail").href = "mailto:" + CONTACT.email;
+  renderStrips(t); renderCerts(t);
+  if(location.hash.slice(1) !== l) history.replaceState(null, "", "#" + l);
+}
+
+document.querySelectorAll(".lang button").forEach(b => b.addEventListener("click", () => setLang(b.dataset.lang)));
+document.getElementById("more").addEventListener("click", () => { certsOpen = !certsOpen; renderCerts(TEXT[lang]); });
+document.getElementById("yr").textContent = new Date().getFullYear();
+
+/* Language: #en / #ar / #fr in the link wins, otherwise the phone's language */
+const fromHash = location.hash.slice(1);
+const fromPhone = (navigator.language || "en").slice(0,2);
+setLang(TEXT[fromHash] ? fromHash : (TEXT[fromPhone] ? fromPhone : "en"));
+</script>
+</body>
+</html>
