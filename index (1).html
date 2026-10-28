@@ -101,6 +101,32 @@ h1{font-size:1.95rem;line-height:1.15;font-weight:600;margin:0;letter-spacing:-.
 .place{margin:4px 0 0;font-size:.9rem;color:var(--sky-ink-2);display:flex;align-items:center;gap:6px}
 .intro{margin:0 0 20px;max-width:60ch;color:#DCE7F4}
 
+
+/* station: big logo + pattern window */
+.hero-grid{position:relative}
+.station{display:flex;align-items:stretch;gap:16px;height:240px;margin:22px 0 4px}
+.station-logo{height:100%;flex:none;transition:opacity .5s ease}
+.station-svg{height:100%;width:auto;display:block;filter:drop-shadow(0 0 18px rgba(24,214,220,.18))}
+body.pre .station-logo{opacity:0}
+.station-window{position:relative;flex:1;min-width:0;border-radius:6px}
+.station-window::before,.station-window::after{content:"";position:absolute;width:14px;height:14px;border:1.5px solid rgba(24,214,220,.55)}
+.station-window::before{top:0;inset-inline-start:0;border-inline-end:0;border-bottom:0}
+.station-window::after{bottom:0;inset-inline-end:0;border-inline-start:0;border-top:0}
+.roles{margin:8px 0 0;height:2.7em;line-height:1.35;overflow:hidden;color:#18D6DC;font-weight:600;font-size:1rem}
+.roles span{display:block;transition:transform .35s ease,opacity .35s ease}
+.roles span.out{transform:translateY(-100%);opacity:0}
+.roles span.in{transform:translateY(100%);opacity:0;transition:none}
+@media (min-width:900px){
+  .roles{height:1.5em}
+  .sky .wrap.head,.sky .wrap.acts{max-width:1080px}
+  .sky .wrap.acts .actions{max-width:560px}
+  .hero-grid{display:grid;grid-template-columns:minmax(0,1fr) 470px;grid-template-rows:auto auto;column-gap:48px;align-content:center}
+  .hero{align-self:end;margin-bottom:12px}
+  .intro{align-self:start}
+  .station{grid-column:2;grid-row:1 / span 2;height:330px;margin:10px 0 20px}
+  .hero,.intro{grid-column:1}
+}
+
 /* ticker */
 .ticker{position:relative;z-index:1;overflow:hidden;white-space:nowrap;border-block:1px solid rgba(24,214,220,.28);background:rgba(4,14,30,.45);margin:0 0 22px;font-size:.88rem;padding:9px 0}
 .ticker-track{display:inline-flex;animation:tick 34s linear infinite}
@@ -232,6 +258,26 @@ footer{margin:44px 0 0;padding-bottom:40px;font-size:.84rem;color:var(--ink-2);d
       </div>
     </div>
 
+    <div class="hero-grid">
+    <div class="station" id="station" aria-hidden="true">
+      <div class="station-logo"><svg class="station-svg" viewBox="230 60 540 880" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<g class="lg-gear"><circle cx="500" cy="265" r="181" fill="none"/><path d="M350,265 a150,150 0 1,0 300,0 a150,150 0 1,0 -300,0 Z M394,265 a106,106 0 1,0 212,0 a106,106 0 1,0 -212,0 Z" fill="#FFFFFF" fill-rule="evenodd"/><path d="M517.00,121.00 L512.00,85.00 L488.00,85.00 L483.00,121.00 Z M570.81,138.47 L579.97,103.29 L557.80,94.11 L539.40,125.46 Z M613.84,175.20 L635.76,146.21 L618.79,129.24 L589.80,151.16 Z M639.54,225.60 L670.89,207.20 L661.71,185.03 L626.53,194.19 Z M644.00,282.00 L680.00,277.00 L680.00,253.00 L644.00,248.00 Z M626.53,335.81 L661.71,344.97 L670.89,322.80 L639.54,304.40 Z M589.80,378.84 L618.79,400.76 L635.76,383.79 L613.84,354.80 Z M386.16,354.80 L364.24,383.79 L381.21,400.76 L410.20,378.84 Z M360.46,304.40 L329.11,322.80 L338.29,344.97 L373.47,335.81 Z M356.00,248.00 L320.00,253.00 L320.00,277.00 L356.00,282.00 Z M373.47,194.19 L338.29,185.03 L329.11,207.20 L360.46,225.60 Z M410.20,151.16 L381.21,129.24 L364.24,146.21 L386.16,175.20 Z M460.60,125.46 L442.20,94.11 L420.03,103.29 L429.19,138.47 Z" fill="#FFFFFF"/><circle cx="500" cy="265" r="92" fill="none" stroke="#FFFFFF" stroke-width="5"/></g>
+<g class="lg-body"><path d="M482,392 L518,392 L518,615 L532,628 L500,705 L468,628 L482,615 Z" fill="#FFFFFF"/><path d="M500,357 L500,640" stroke="#0B2545" stroke-width="4"/><path d="M500,355 L500,387" stroke="#FFFFFF" stroke-width="5"/><path d="M482,436.0 L250,396.6 L270,412.6 L482,452.0 Z M482,458.0 L280,423.7 L300,439.7 L482,474.0 Z M482,480.0 L310,450.8 L330,466.8 L482,496.0 Z M352.0,500.2 L361.0,500.2 L365.0,520.2 L356.0,520.2 Z M369.0,501.2 L378.0,501.2 L382.0,521.2 L373.0,521.2 Z M386.0,502.2 L395.0,502.2 L399.0,522.2 L390.0,522.2 Z M403.0,503.3 L412.0,503.3 L416.0,523.3 L407.0,523.3 Z M420.0,504.3 L429.0,504.3 L433.0,524.3 L424.0,524.3 Z M437.0,505.3 L446.0,505.3 L450.0,525.3 L441.0,525.3 Z M454.0,506.3 L463.0,506.3 L467.0,526.3 L458.0,526.3 Z M482,504 L470,504 L474,526 L482,526 Z" fill="#FFFFFF"/><path d="M482,436.0 L250,396.6 L270,412.6 L482,452.0 Z M482,458.0 L280,423.7 L300,439.7 L482,474.0 Z M482,480.0 L310,450.8 L330,466.8 L482,496.0 Z M352.0,500.2 L361.0,500.2 L365.0,520.2 L356.0,520.2 Z M369.0,501.2 L378.0,501.2 L382.0,521.2 L373.0,521.2 Z M386.0,502.2 L395.0,502.2 L399.0,522.2 L390.0,522.2 Z M403.0,503.3 L412.0,503.3 L416.0,523.3 L407.0,523.3 Z M420.0,504.3 L429.0,504.3 L433.0,524.3 L424.0,524.3 Z M437.0,505.3 L446.0,505.3 L450.0,525.3 L441.0,525.3 Z M454.0,506.3 L463.0,506.3 L467.0,526.3 L458.0,526.3 Z M482,504 L470,504 L474,526 L482,526 Z" fill="#FFFFFF" transform="translate(1000,0) scale(-1,1)"/></g>
+<g class="lg-circ"><path pathLength="1" d="M474,560 L436,560 L408,588 L372,588 M474,586 L450,586 L424,612 L398,612 M474,616 L462,616 L442,636" fill="none" stroke="#18D6DC" stroke-width="4" stroke-linejoin="round"/>
+<circle cx="364" cy="588" r="7" fill="none" stroke="#18D6DC" stroke-width="4"/>
+<circle cx="390" cy="612" r="7" fill="none" stroke="#18D6DC" stroke-width="4"/>
+<circle cx="436" cy="642" r="7" fill="none" stroke="#18D6DC" stroke-width="4"/>
+<path pathLength="1" d="M474,560 L436,560 L408,588 L372,588 M474,586 L450,586 L424,612 L398,612 M474,616 L462,616 L442,636" fill="none" stroke="#18D6DC" stroke-width="4" stroke-linejoin="round" transform="translate(1000,0) scale(-1,1)"/>
+<circle cx="364" cy="588" r="7" fill="none" stroke="#18D6DC" stroke-width="4" transform="translate(1000,0) scale(-1,1)"/>
+<circle cx="390" cy="612" r="7" fill="none" stroke="#18D6DC" stroke-width="4" transform="translate(1000,0) scale(-1,1)"/>
+<circle cx="436" cy="642" r="7" fill="none" stroke="#18D6DC" stroke-width="4" transform="translate(1000,0) scale(-1,1)"/></g>
+<g class="lg-frame"><path pathLength="1" d="M494,712 L372,662 L340,596 M494,700 L404,664" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path pathLength="1" d="M494,712 L372,662 L340,596 M494,700 L404,664" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" transform="translate(1000,0) scale(-1,1)"/></g>
+<g class="lg-node"><circle cx="500" cy="752" r="13" fill="#18D6DC"/><circle cx="500" cy="752" r="24" fill="none" stroke="#18D6DC" stroke-width="3"/><path d="M462,752 L470,752 M530,752 L538,752 M500,782 L500,790" stroke="#18D6DC" stroke-width="4" stroke-linecap="round"/></g>
+<g class="lg-text"><path d="M350.096 905.0V815.4H393.87199999999996Q410.768 815.4 419.28 821.8Q427.792 828.2 427.792 838.696Q427.792 845.736 424.336 850.9200000000001Q420.88 856.104 414.864 858.9200000000001Q408.84799999999996 861.736 401.03999999999996 861.736L403.472 856.488Q411.91999999999996 856.488 418.448 859.24Q424.976 861.992 428.624 867.3679999999999Q432.272 872.744 432.272 880.552Q432.272 892.072 423.18399999999997 898.5360000000001Q414.096 905.0 396.43199999999996 905.0ZM370.70399999999995 889.384H394.89599999999996Q402.96 889.384 407.12 886.76Q411.28 884.136 411.28 878.376Q411.28 872.744 407.12 869.992Q402.96 867.24 394.89599999999996 867.24H369.168V852.136H391.312Q398.864 852.136 402.89599999999996 849.512Q406.928 846.888 406.928 841.512Q406.928 836.264 402.89599999999996 833.64Q398.864 831.016 391.312 831.016H370.70399999999995ZM498.528 906.536Q489.44 906.536 481.82399999999996 903.144Q474.20799999999997 899.752 469.344 893.48L480.864 879.656Q484.576 884.52 488.672 887.016Q492.768 889.512 497.504 889.512Q510.176 889.512 510.176 874.664V832.04H478.688V815.4H530.784V873.512Q530.784 890.152 522.592 898.344Q514.4 906.536 498.528 906.536ZM585.264 905.0V815.4H652.976V832.04H605.872V888.36H654.64V905.0ZM604.336 867.624V851.496H647.472V867.624Z" fill="#FFFFFF"/></g>
+</svg></div>
+      <div class="station-window" id="window"></div>
+    </div>
     <div class="hero reveal" style="--d:.1s">
       <div class="photo-wrap" aria-hidden="true">
         <span class="dash-ring"></span>
@@ -244,6 +290,7 @@ footer{margin:44px 0 0;padding-bottom:40px;font-size:.84rem;color:var(--ink-2);d
       </div>
       <div>
         <h1 id="name"><bdi>Bassam J.&nbsp;Al&nbsp;Eter</bdi></h1>
+        <p class="roles" aria-live="off"><span id="role"></span></p>
         <p class="headline" data-t="headline"></p>
         <p class="place">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
@@ -253,11 +300,12 @@ footer{margin:44px 0 0;padding-bottom:40px;font-size:.84rem;color:var(--ink-2);d
     </div>
 
     <p class="intro reveal" style="--d:.2s" data-t="intro"></p>
+    </div>
   </div>
 
   <div class="ticker reveal" style="--d:.3s" aria-hidden="true"><div class="ticker-track" id="ticker"></div></div>
 
-  <div class="wrap">
+  <div class="wrap acts">
     <nav class="actions reveal" style="--d:.4s" aria-label="Contact">
       <a class="btn primary" href="bassam.vcf" download="Bassam_J_Al_Eter.vcf">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="9" cy="8" r="4"/><path d="M2 21c0-3.9 3.1-7 7-7s7 3.1 7 7"/><path d="M19 8v6M16 11h6"/></svg>
@@ -742,6 +790,12 @@ const EXTRA = {
   "skip": "Saltar intro"
 }
 };
+/* Cycling roles under the name. */
+EXTRA.en.roles = ["Airfield Operations Officer", "Mechatronics Engineer", "AI Automation Specialist", "Teacher and Trainer"];
+EXTRA.ar.roles = ["ضابط عمليات مطار", "مهندس ميكاترونكس", "أخصائي أتمتة بالذكاء الاصطناعي", "مدرّس ومدرّب"];
+EXTRA.fr.roles = ["Officier des opérations aéroportuaires", "Ingénieur mécatronique", "Spécialiste en automatisation IA", "Enseignant et formateur"];
+EXTRA.es.roles = ["Oficial de operaciones aeroportuarias", "Ingeniero mecatrónico", "Especialista en automatización con IA", "Profesor y formador"];
+
 /* Years in aviation are counted from 2018 (air traffic controller). */
 const AVIATION_SINCE = 2018;
 
@@ -750,7 +804,7 @@ const AVIATION_SINCE = 2018;
 const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const chev = '<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>';
-let lang = "en", certsOpen = false, openCodes = new Set();
+let lang = "en", certsOpen = false, openCodes = new Set(), roleIdx = 0;
 
 function renderStrips(t){
   const box = document.getElementById("strips");
@@ -822,6 +876,7 @@ function setLang(l){
   const sk = document.getElementById("skip"); if(sk) sk.textContent = e.skip;
   renderStrips(t); renderCerts(t); renderTicker(e); renderStats(e);
   if(location.hash.slice(1) !== l) history.replaceState(null, "", "#" + l);
+  roleIdx = 0; const r = document.getElementById("role"); r.className = ""; r.textContent = e.roles[0];
   if(window.radarResize) radarResize();
 }
 
@@ -848,95 +903,136 @@ const fromHash = location.hash.slice(1);
 const fromPhone = (navigator.language || "en").slice(0,2);
 setLang(TEXT[fromHash] ? fromHash : (TEXT[fromPhone] ? fromPhone : "en"));
 
+/* cycle the roles under the name */
+if(!reduce){
+  setInterval(() => {
+    const r = document.getElementById("role"), list = EXTRA[lang].roles;
+    r.classList.add("out");
+    setTimeout(() => {
+      roleIdx = (roleIdx + 1) % list.length; r.textContent = list[roleIdx];
+      r.className = "in"; void r.offsetWidth; r.className = "";
+    }, 350);
+  }, 2800);
+}
+
 /* stats count up when they come into view */
 if(!reduce && "IntersectionObserver" in window){
   const io = new IntersectionObserver(es => { if(es.some(x=>x.isIntersecting)){ countUp(); io.disconnect(); } }, {threshold:.5});
   io.observe(document.getElementById("stats"));
 } else { statsCounted = true; renderStats(EXTRA[lang]); }
 
-/* ---------------- radar background ---------------- */
+/* ---------------- radar station ---------------- */
 (function(){
   const cv = document.getElementById("radar"), ctx = cv.getContext("2d");
   const CY = "24,214,220";
-  let w=0,h=0,cx=0,cy=0,R=0,nodes=[],ang=-Math.PI/2,last=0,running=true,raf=0;
-  const SPEED = Math.PI*2/4.2; // one turn every 4.2 s
-  function rng(seed){ return () => (seed = (seed*16807) % 2147483647) / 2147483647; }
-  function build(){
-    const r = rng(7), n = Math.round(Math.min(34, Math.max(18, w*h/13000)));
-    nodes = [];
-    for(let i=0;i<n;i++){
-      const x = r()*w, y = r()*h;
-      if(Math.hypot(x-cx,y-cy) < 24) continue;
-      nodes.push({x,y,a:Math.atan2(y-cy,x-cx),lit:0,nb:[]});
+  const SPEED = Math.PI*2/4.2;              // one turn every 4.2 s
+  /* Shapes revealed by the radar, in unit coordinates (0..1). e = lines between points. */
+  const SHAPES = (function(){
+    function densify(poly, step, closed){
+      const out=[], n=poly.length, m=closed?n:n-1;
+      for(let i=0;i<m;i++){ const A=poly[i], B=poly[(i+1)%n], k=Math.max(1,Math.round(Math.hypot(B[0]-A[0],B[1]-A[1])/step));
+        for(let j=0;j<k;j++) out.push([A[0]+(B[0]-A[0])*j/k, A[1]+(B[1]-A[1])*j/k]); }
+      if(!closed) out.push(poly[n-1]); return out;
     }
-    nodes.forEach(p => { p.nb = nodes.filter(q=>q!==p).sort((a,b)=>Math.hypot(a.x-p.x,a.y-p.y)-Math.hypot(b.x-p.x,b.y-p.y)).slice(0,2); });
+    function addPath(S, list, closed){ const c=S.p.length; list.forEach(q=>S.p.push(q)); for(let i=0;i<list.length-1;i++) S.e.push([c+i,c+i+1]); if(closed) S.e.push([c+list.length-1,c]); }
+    // Egyptian ankh: teardrop loop, flared arms, flared shaft, with the loop's inner hole
+    const ankh = {p:[], e:[], big:[]};
+    addPath(ankh, densify([[0.5,0.03],[0.59,0.06],[0.645,0.13],[0.655,0.21],[0.635,0.29],[0.59,0.36],[0.545,0.43],
+      [0.545,0.45],[0.87,0.405],[0.87,0.575],[0.545,0.53],[0.61,0.97],[0.39,0.97],[0.455,0.53],[0.13,0.575],[0.13,0.405],[0.455,0.45],
+      [0.455,0.43],[0.41,0.36],[0.365,0.29],[0.345,0.21],[0.355,0.13],[0.41,0.06]],0.07,true), true);
+    addPath(ankh, densify([[0.5,0.10],[0.555,0.125],[0.585,0.19],[0.575,0.27],[0.54,0.34],[0.5,0.385],[0.46,0.34],[0.425,0.27],[0.415,0.19],[0.445,0.125]],0.07,true), true);
+    // Scorpius (approximate star positions); index 3 is Antares
+    const scorp = {p:[[0.20,0.06],[0.13,0.17],[0.10,0.30],[0.33,0.29],[0.25,0.22],[0.41,0.36],[0.47,0.48],[0.49,0.60],[0.51,0.72],[0.58,0.83],[0.70,0.90],[0.81,0.87],[0.87,0.77],[0.93,0.68],[0.97,0.63]],
+      e:[[0,1],[1,2],[1,4],[4,3],[3,5],[5,6],[6,7],[7,8],[8,9],[9,10],[10,11],[11,12],[12,13],[13,14]], big:[3]};
+    // Cedar of Lebanon: top triangle of 3 dots, then separate straight rows of 2, 3 and 4 dots, then the trunk and base
+    const ced = {p:[], e:[], big:[]};
+    addPath(ced, [[0.5,0.06],[0.58,0.20],[0.42,0.20]], true);
+    addPath(ced, [[0.35,0.34],[0.65,0.34]], false);
+    addPath(ced, [[0.26,0.49],[0.5,0.49],[0.74,0.49]], false);
+    addPath(ced, [[0.17,0.64],[0.39,0.64],[0.61,0.64],[0.83,0.64]], false);
+    addPath(ced, [[0.5,0.75],[0.5,0.87]], false);
+    addPath(ced, [[0.41,0.95],[0.5,0.95],[0.59,0.95]], false);
+    // Control tower: antenna, cab, shaft, base
+    const tw = {p:[[0.5,0.02],[0.5,0.09],[0.30,0.09],[0.70,0.09],[0.24,0.17],[0.76,0.17],[0.33,0.33],[0.67,0.33],[0.42,0.33],[0.58,0.33],[0.42,0.64],[0.58,0.64],[0.42,0.95],[0.58,0.95],[0.28,0.97],[0.72,0.97],[0.5,0.17],[0.5,0.33]],
+      e:[[0,1],[2,3],[2,4],[3,5],[4,5],[4,6],[5,7],[6,7],[16,17],[8,10],[10,12],[9,11],[11,13],[10,11],[12,13],[14,12],[13,15]], big:[0]};
+    return [ankh, scorp, ced, tw];
+  })();
+  let w=0,h=0,cx=0,cy=0,R=0,win={x:0,y:0,s:1},noise=[],pts=[],oldPts=[],oldIdx=0,swaps=0,shapeIdx=0,winAng=0,ang=0,last=0,running=true,raf=0,swapArmed=false;
+  function rng(seed){ return () => (seed = (seed*16807) % 2147483647) / 2147483647; }
+  function angOf(x,y){ return Math.atan2(y-cy,x-cx); }
+  function loadShape(i){
+    oldPts = pts; oldIdx = shapeIdx;
+    shapeIdx = i % SHAPES.length; const S = SHAPES[shapeIdx];
+    pts = S.p.map(([u,v],k) => { const x = win.x + u*win.s, y = win.y + v*win.s; return {x,y,a:angOf(x,y),lit:0,big:S.big.includes(k)}; });
   }
   window.radarResize = function(){
-    const dpr = Math.min(window.devicePixelRatio||1, 2), rect = cv.parentElement.getBoundingClientRect();
-    w = rect.width; h = rect.height;
-    cv.width = Math.round(w*dpr); cv.height = Math.round(h*dpr);
-    ctx.setTransform(dpr,0,0,dpr,0,0);
-    const rtl = document.documentElement.dir === "rtl";
-    cx = rtl ? w*0.16 : w*0.84; cy = Math.min(h*0.3, 160);
-    R = Math.hypot(Math.max(cx, w-cx), h-cy);
-    build(); if(reduce) frame(0, true);
+    const dpr = Math.min(window.devicePixelRatio||1, 2), host = cv.parentElement.getBoundingClientRect();
+    w = host.width; h = host.height;
+    cv.width = Math.round(w*dpr); cv.height = Math.round(h*dpr); ctx.setTransform(dpr,0,0,dpr,0,0);
+    const lg = document.querySelector(".station-svg").getBoundingClientRect();
+    cx = lg.left - host.left + lg.width*0.5; cy = lg.top - host.top + lg.height*((752-60)/880);
+    const wb = document.getElementById("window").getBoundingClientRect();
+    const pad = 14, side = Math.min(wb.width, wb.height) - pad*2;
+    win = {x: wb.left - host.left + (wb.width-side)/2, y: wb.top - host.top + (wb.height-side)/2, s: side};
+    winAng = angOf(win.x+side/2, win.y+side/2);
+    R = Math.hypot(Math.max(cx, w-cx), Math.max(cy, h-cy));
+    const r = rng(11), n = Math.round(Math.min(26, Math.max(12, w*h/18000)));
+    noise = [];
+    for(let i=0;i<n;i++){ const x=r()*w, y=r()*h;
+      if(x>win.x-6 && x<win.x+side+6 && y>win.y-6 && y<win.y+side+6) continue;
+      noise.push({x,y,a:angOf(x,y),lit:0,nb:[]}); }
+    noise.forEach(p => { p.nb = noise.filter(q=>q!==p).sort((a,b)=>Math.hypot(a.x-p.x,a.y-p.y)-Math.hypot(b.x-p.x,b.y-p.y)).slice(0,2); });
+    loadShape(shapeIdx);
+    if(reduce){ pts.forEach(p=>p.lit=1); frame(0,true); }
   };
   function trace(p,q,alpha){
     const dx=q.x-p.x, dy=q.y-p.y, ax=Math.abs(dx), ay=Math.abs(dy);
-    ctx.strokeStyle = `rgba(${CY},${alpha})`; ctx.lineWidth = 1.2;
+    ctx.strokeStyle = `rgba(${CY},${alpha})`; ctx.lineWidth = 1.1;
     ctx.beginPath(); ctx.moveTo(p.x,p.y);
-    if(ax>ay){ const mx = p.x + Math.sign(dx)*(ax-ay); ctx.lineTo(mx,p.y); }
-    else { const my = p.y + Math.sign(dy)*(ay-ax); ctx.lineTo(p.x,my); }
+    if(ax>ay) ctx.lineTo(p.x + Math.sign(dx)*(ax-ay), p.y); else ctx.lineTo(p.x, p.y + Math.sign(dy)*(ay-ax));
     ctx.lineTo(q.x,q.y); ctx.stroke();
-    ctx.beginPath(); ctx.arc(q.x,q.y,2.6,0,Math.PI*2); ctx.stroke();
   }
+  function passed(a, prev, now){ let d=(now-a)%(Math.PI*2); if(d<0) d+=Math.PI*2; return d <= (now-prev)+0.001; }
   function frame(dt, still){
     ctx.clearRect(0,0,w,h);
-    // range rings + crosshair
     ctx.lineWidth = 1;
-    for(let k=1;k<=5;k++){ ctx.strokeStyle=`rgba(${CY},${k%2?0.10:0.06})`; ctx.beginPath(); ctx.arc(cx,cy,R*k/5.2,0,Math.PI*2); ctx.stroke(); }
+    for(let k=1;k<=6;k++){ ctx.strokeStyle=`rgba(${CY},${k%2?0.10:0.06})`; ctx.beginPath(); ctx.arc(cx,cy,R*k/6.2,0,Math.PI*2); ctx.stroke(); }
     ctx.strokeStyle=`rgba(${CY},0.06)`; ctx.beginPath(); ctx.moveTo(0,cy); ctx.lineTo(w,cy); ctx.moveTo(cx,0); ctx.lineTo(cx,h); ctx.stroke();
-    // bearing ticks on the inner ring
     ctx.strokeStyle=`rgba(${CY},0.22)`;
-    for(let k=0;k<72;k++){ const a=k*Math.PI/36, r1=R/5.2, r2=r1+(k%6?4:9); ctx.beginPath(); ctx.moveTo(cx+Math.cos(a)*r1,cy+Math.sin(a)*r1); ctx.lineTo(cx+Math.cos(a)*r2,cy+Math.sin(a)*r2); ctx.stroke(); }
+    const r1 = R/6.2; for(let k=0;k<72;k++){ const a=k*Math.PI/36, r2=r1+(k%6?4:9); ctx.beginPath(); ctx.moveTo(cx+Math.cos(a)*r1,cy+Math.sin(a)*r1); ctx.lineTo(cx+Math.cos(a)*r2,cy+Math.sin(a)*r2); ctx.stroke(); }
     const prev = ang; if(!still) ang += dt*SPEED;
-    // sweep trail
+    // swap shape when the sweep points away from the window
+    if(!still){ const opp = winAng + Math.PI;
+      if(passed(opp, prev, ang)){ if(swapArmed && (++swaps % 2 === 0)) loadShape(shapeIdx+1); swapArmed = true; } }
     const slices = 28, spread = 0.75;
-    for(let k=0;k<slices;k++){
-      const a1 = ang - k*spread/slices, a0 = a1 - spread/slices - 0.004;
-      ctx.fillStyle = `rgba(${CY},${0.16*(1-k/slices)})`;
-      ctx.beginPath(); ctx.moveTo(cx,cy); ctx.arc(cx,cy,R,a0,a1); ctx.closePath(); ctx.fill();
+    for(let k=0;k<slices;k++){ const a1 = ang - k*spread/slices, a0 = a1 - spread/slices - 0.004;
+      ctx.fillStyle = `rgba(${CY},${0.15*(1-k/slices)})`; ctx.beginPath(); ctx.moveTo(cx,cy); ctx.arc(cx,cy,R,a0,a1); ctx.closePath(); ctx.fill(); }
+    if(!still){ ctx.strokeStyle=`rgba(${CY},0.7)`; ctx.lineWidth=1.6; ctx.beginPath(); ctx.moveTo(cx,cy); ctx.lineTo(cx+Math.cos(ang)*R, cy+Math.sin(ang)*R); ctx.stroke(); }
+    // random noise nodes
+    noise.forEach(p => { if(!still){ if(passed(p.a,prev,ang)) p.lit=1; else p.lit=Math.max(0,p.lit-dt*0.45); } });
+    noise.forEach(p => { if(p.lit>0.03) p.nb.forEach(q => trace(p,q,p.lit*0.4)); });
+    noise.forEach(p => { ctx.fillStyle=`rgba(${CY},${0.22+p.lit*0.6})`; ctx.beginPath(); ctx.arc(p.x,p.y,1.4+p.lit*1.4,0,Math.PI*2); ctx.fill(); });
+    // the hidden shape (and the previous one fading out)
+    function drawShape(list, S, fade){
+      ctx.lineWidth = 1.4;
+      S.e.forEach(([i,j]) => { const a=list[i], b=list[j]; if(!a||!b) return; const al=Math.min(a.lit,b.lit)*fade; if(al>0.02){ ctx.strokeStyle=`rgba(${CY},${al*0.85})`; ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke(); } });
+      list.forEach(p => { const rad = (p.big?3.4:2.2) + p.lit*1.6, l = p.lit*fade;
+        if(l>0.05){ ctx.fillStyle=`rgba(${CY},${l*0.22})`; ctx.beginPath(); ctx.arc(p.x,p.y,rad+6,0,Math.PI*2); ctx.fill(); }
+        ctx.fillStyle=`rgba(${CY},${(0.14+p.lit*0.86)*fade})`; ctx.beginPath(); ctx.arc(p.x,p.y,rad,0,Math.PI*2); ctx.fill(); });
     }
-    ctx.strokeStyle=`rgba(${CY},0.7)`; ctx.lineWidth=1.6;
-    ctx.beginPath(); ctx.moveTo(cx,cy); ctx.lineTo(cx+Math.cos(ang)*R, cy+Math.sin(ang)*R); ctx.stroke();
-    // nodes light up when the sweep passes
-    const swept = still ? 0 : ang - prev;
-    nodes.forEach(p => {
-      let d = (ang - p.a) % (Math.PI*2); if(d<0) d += Math.PI*2;
-      if(still) p.lit = Math.max(0, 1 - d/2.5);
-      else if(d <= swept + 0.001) p.lit = 1;
-      else p.lit = Math.max(0, p.lit - dt*0.38);
-    });
-    nodes.forEach(p => { if(p.lit>0.03) p.nb.forEach(q => trace(p,q,p.lit*0.55)); });
-    nodes.forEach(p => {
-      if(p.lit>0.05){ ctx.fillStyle=`rgba(${CY},${p.lit*0.18})`; ctx.beginPath(); ctx.arc(p.x,p.y,4+p.lit*8,0,Math.PI*2); ctx.fill(); }
-      ctx.fillStyle=`rgba(${CY},${0.28+p.lit*0.72})`; ctx.beginPath(); ctx.arc(p.x,p.y,1.6+p.lit*1.8,0,Math.PI*2); ctx.fill();
-    });
-    ctx.fillStyle=`rgba(${CY},0.9)`; ctx.beginPath(); ctx.arc(cx,cy,2.5,0,Math.PI*2); ctx.fill();
+    oldPts.forEach(p => { p.lit = Math.max(0, p.lit - dt*0.6); });
+    if(oldPts.length && oldPts.some(p=>p.lit>0.01)) drawShape(oldPts, SHAPES[oldIdx], 1);
+    pts.forEach(p => { if(!still){ if(passed(p.a,prev,ang)) p.lit=1; else p.lit=Math.max(0,p.lit-dt*0.17); } });
+    drawShape(pts, SHAPES[shapeIdx], 1);
   }
-  function loop(t){
-    const dt = last ? Math.min(0.05,(t-last)/1000) : 0; last = t;
-    frame(dt,false);
-    if(running) raf = requestAnimationFrame(loop);
-  }
+  function loop(t){ const dt = last ? Math.min(0.05,(t-last)/1000) : 0; last = t; frame(dt,false); if(running) raf = requestAnimationFrame(loop); }
   function start(){ if(reduce||raf) return; running = true; last = 0; raf = requestAnimationFrame(loop); }
   function stop(){ running = false; cancelAnimationFrame(raf); raf = 0; }
+  ang = winAng - 1.2;
   radarResize();
   let rt; window.addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(radarResize, 150); });
   if(!reduce){
-    if("IntersectionObserver" in window){
-      new IntersectionObserver(es => es[0].isIntersecting ? start() : stop()).observe(cv);
-    } else start();
+    if("IntersectionObserver" in window) new IntersectionObserver(es => es[0].isIntersecting ? start() : stop()).observe(cv); else start();
     document.addEventListener("visibilitychange", () => document.hidden ? stop() : start());
   }
 })();
@@ -952,11 +1048,11 @@ if(!reduce && "IntersectionObserver" in window){
     if(done) return; done = true;
     try { sessionStorage.setItem("bje-intro","1"); } catch(e){}
     const logo = intro.querySelector(".intro-logo");
-    const m = document.querySelector(".mark img").getBoundingClientRect(), l = logo.getBoundingClientRect();
-    const s = (m.height*1.4)/l.height;
-    const tx = (m.left+m.width/2)-(l.left+l.width/2), ty = (m.top+m.height/2)-(l.top+l.height*0.33);
-    logo.style.transform = `translate(${tx}px,${ty}px) scale(${s})`;
-    logo.style.opacity = "0";
+    const m = document.querySelector(".station-svg").getBoundingClientRect(), l = logo.getBoundingClientRect();
+    const sc = m.height/l.height;
+    const tx = (m.left+m.width/2)-(l.left+l.width/2), ty = (m.top+m.height/2)-(l.top+l.height/2);
+    logo.style.transform = `translate(${tx}px,${ty}px) scale(${sc})`;
+    setTimeout(() => { logo.style.opacity = "0"; }, 450);
     intro.classList.add("out");
     document.body.classList.remove("lock");
     setTimeout(() => document.body.classList.remove("pre"), 250);
