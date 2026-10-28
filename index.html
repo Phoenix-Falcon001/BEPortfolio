@@ -69,9 +69,13 @@ a{color:inherit}
 .top{display:flex;justify-content:space-between;align-items:center;padding-top:18px}
 .mark{display:block;height:40px;width:40px}
 .mark img{height:40px;width:40px;display:block}
-.lang{display:inline-flex;border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:3px;gap:2px;background:rgba(4,14,30,.35)}
-.lang button{font:inherit;font-size:.85rem;font-weight:500;border:0;background:none;color:var(--sky-ink-2);padding:5px 12px;border-radius:999px;cursor:pointer}
-.lang button[aria-pressed="true"]{background:#18D6DC;color:#0B2545}
+.lang{position:relative;display:inline-flex;align-items:center;gap:6px;height:38px;padding:0 12px;border:1px solid rgba(255,255,255,.22);border-radius:999px;background:rgba(4,14,30,.45);color:#fff;cursor:pointer}
+.lang:focus-within{border-color:#18D6DC;box-shadow:0 0 0 3px rgba(24,214,220,.2)}
+.lang .globe{width:18px;height:18px;color:#18D6DC;flex:none}
+.lang select{appearance:none;-webkit-appearance:none;background:none;border:0;color:#fff;font:inherit;font-size:.92rem;font-weight:500;padding:0 18px 0 0;margin:0;cursor:pointer;outline:none}
+[dir="rtl"] .lang select{padding:0 0 0 18px}
+.lang select option{color:#0B2545;background:#fff}
+.lang .caret{position:absolute;inset-inline-end:10px;width:14px;height:14px;color:#B9CCE4;pointer-events:none}
 
 .hero{display:flex;gap:20px;align-items:center;margin:26px 0 20px}
 .photo-wrap{position:relative;width:124px;height:124px;flex:none;display:grid;place-items:center}
@@ -201,11 +205,16 @@ footer{margin:44px 0 0;padding-bottom:40px;font-size:.84rem;color:var(--ink-2);d
       <a class="mark" href="#" aria-label="Bassam J. Al Eter, home" onclick="window.scrollTo({top:0});return false;">
         <img src="bje-mark-white.svg" alt="BJE logo">
       </a>
-      <div class="lang" role="group" aria-label="Language">
-        <button type="button" data-lang="en">EN</button>
-        <button type="button" data-lang="ar" lang="ar">عربي</button>
-        <button type="button" data-lang="fr">FR</button>
-      </div>
+      <label class="lang">
+        <svg class="globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg>
+        <select id="langSel" aria-label="Language">
+          <option value="en">English</option>
+          <option value="ar" lang="ar">العربية</option>
+          <option value="fr">Français</option>
+          <option value="es">Español</option>
+        </select>
+        <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </label>
     </div>
 
     <div class="hero reveal" style="--d:.1s">
@@ -298,7 +307,8 @@ const CONTACT = {
   whatsappText: {
     en: "Hello Bassam, I got your card.",
     ar: "مرحباً بسام، حصلت على بطاقتك.",
-    fr: "Bonjour Bassam, j'ai reçu votre carte."
+    fr: "Bonjour Bassam, j'ai reçu votre carte.",
+    es: "Hola Bassam, recibí tu tarjeta."
   }
 };
 
@@ -518,6 +528,167 @@ fr: {
         { h:"Mon rôle", p:"Programmes, enseignement technique et opérations." }
       ], links:true }
   ]
+},
+
+/* ------------------------------ SPANISH ----------------------------- */
+es: {
+  "headline": "Operaciones aeroportuarias, ingeniería e IA",
+  "location": "Líbano",
+  "intro": "Trabajo donde se unen la aviación, la ingeniería y la IA: dirijo operaciones aeroportuarias, desarrollo automatizaciones y enseño habilidades técnicas.",
+  "save": "Guardar contacto",
+  "whatsapp": "WhatsApp",
+  "email": "Correo",
+  "cv": "Descargar CV",
+  "whatIDo": "Lo que hago",
+  "certsTitle": "Certificaciones y formación",
+  "showAll": n => `Ver todas (${n})`,
+  "showLess": "Ver menos",
+  "langsTitle": "Idiomas",
+  "langs": "Árabe, inglés, francés",
+  "roles": [
+    {
+      "code": "AVN",
+      "title": "Aviación y operaciones aeroportuarias",
+      "sub": "Oficial de operaciones aeroportuarias, disponible para consultoría aeronáutica",
+      "items": [
+        {
+          "h": "Oficial de operaciones aeroportuarias",
+          "m": "Fuerza Aérea Libanesa, desde 2020",
+          "p": "Superviso las operaciones diarias del aeródromo y la unidad de bomberos, realizo inspecciones de seguridad, redacto planes de respuesta a emergencias y hago cumplir las normas de seguridad. Opero la radioayuda DVOR y me encargo del mantenimiento de primer nivel y la resolución de averías, recurriendo a los técnicos del fabricante cuando es necesario. También doy soporte técnico a los sistemas de pista y del aeródromo."
+        },
+        {
+          "h": "Diseño de formación aeronáutica",
+          "p": "Diseñé un programa de formación y habilitación de control de tránsito aéreo en varios niveles y un programa de certificación de conductores de vehículos en el lado aire, basados en referencias de la OACI y la FAA. Redacté documentación del sistema de gestión de la seguridad (SMS) y procedimientos de prevención de FOD."
+        },
+        {
+          "h": "Ingeniero mecatrónico, proyecto NAVAIDS",
+          "m": "Aviation Consulting Services, Beirut, 2022 – 2024",
+          "p": "Supervisé los trabajos de instalación y las normas de seguridad, desplegué y configuré equipos VOR, ILS y DME, e implementé procedimientos de puesta a tierra."
+        },
+        {
+          "h": "Oficial de enlace, Cuartel General de la FPNUL",
+          "m": "2023",
+          "p": "Coordiné la comunicación entre la Fuerza Aérea Libanesa y la FPNUL en actividades conjuntas."
+        },
+        {
+          "h": "Controlador de tránsito aéreo",
+          "m": "Fuerza Aérea Libanesa, 2018 – 2020",
+          "p": "Emití autorizaciones e información de tránsito a los pilotos en espacio aéreo de clase D por radio."
+        },
+        {
+          "h": "Formación",
+          "p": "Curso de Oficial de Operaciones Aeroportuarias, Base Aérea de Keesler, EE. UU. (2020). Licenciatura en Ciencias Militares, Academia Militar del Ejército Libanés (2020). Habilitación de control de tránsito aéreo, Escuela de la Fuerza Aérea (2019)."
+        }
+      ],
+      "note": "Disponible para consultoría en operaciones aeroportuarias, seguridad aérea y SMS, apoyo a la instalación de NAVAIDS y diseño de formación aeronáutica."
+    },
+    {
+      "code": "MEC",
+      "title": "Ingeniería mecatrónica",
+      "sub": "Ingeniero mecatrónico",
+      "items": [
+        {
+          "h": "Licenciatura (BSc) en Ingeniería Mecatrónica",
+          "m": "American University of Science and Technology (AUST), 2023"
+        },
+        {
+          "h": "Diploma en Sistemas Mecatrónicos del Automóvil",
+          "m": "Centro de Formación Profesional Continua, Trípoli, 2024"
+        },
+        {
+          "h": "Coordinador de proyectos",
+          "m": "Showcase Maintenance Group, 2025",
+          "p": "Planificación, programación y seguimiento de proyectos, y coordinación entre equipos y partes interesadas."
+        },
+        {
+          "h": "Formación en mantenimiento de aeronaves",
+          "m": "Fuerza Aérea Libanesa, 2023",
+          "p": "Sistemas mecánicos y eléctricos de aeronaves, sustitución e instalación de componentes y pruebas de vibración."
+        },
+        {
+          "h": "Prácticas industriales",
+          "m": "2023 – 2024",
+          "p": "PLC y sistemas hidráulicos (Siemens, FESTO) en Zeeny Steel. Montaje y diagnóstico de motores diésel en Jallad Caterpillar. Prácticas a distancia en Adeeb Robotics (EE. UU.) creando conjuntos de datos de IA para robots industriales, con iniciación al CNC."
+        }
+      ],
+      "tags": [
+        "AutoCAD",
+        "Inventor",
+        "MATLAB",
+        "Proteus",
+        "Arduino",
+        "PLC",
+        "Robotics",
+        "Renewable energy",
+        "Fire systems design"
+      ]
+    },
+    {
+      "code": "AI",
+      "title": "Automatización e ingeniería de IA",
+      "sub": "Especialista en automatización con IA, estudiante de ingeniería de IA",
+      "items": [
+        {
+          "h": "Especialista en automatización con IA",
+          "m": "USCHEED, desde 2025",
+          "p": "Diseño y desarrollo flujos de trabajo basados en IA que reducen el trabajo manual, mediante ingeniería de prompts, herramientas de automatización e integración de sistemas."
+        },
+        {
+          "h": "Diploma en Ingeniería de IA",
+          "m": "Universidad Saint-Joseph (USJ), ESIB, en curso desde 2026"
+        },
+        {
+          "h": "Lo que construyo",
+          "p": "Automatizaciones con n8n, prototipos de chatbots RAG y prototipos de visión por computadora, incluido un concepto de detección de FOD para la seguridad en pista."
+        }
+      ],
+      "tags": [
+        "Python",
+        "n8n",
+        "UiPath RPA",
+        "Prompt engineering",
+        "LLM and RAG",
+        "C++"
+      ]
+    },
+    {
+      "code": "EDU",
+      "title": "Docencia y formación",
+      "sub": "Profesor y diseñador de formación",
+      "items": [
+        {
+          "h": "Profesor",
+          "m": "SUC College, Formación Profesional Continua, desde 2024",
+          "p": "Motores de automóvil, sistemas eléctricos del automóvil, AutoCAD y dibujo técnico."
+        },
+        {
+          "h": "Cofundador e instructor",
+          "m": "Brainscope Learning Center",
+          "p": "Robótica, IA, programación y apoyo académico."
+        },
+        {
+          "h": "Diseño de programas de formación",
+          "p": "Preparo paquetes de formación completos, desde el plan de estudios y las clases hasta las guías del instructor y las evaluaciones, para formación militar y profesional."
+        }
+      ]
+    },
+    {
+      "code": "BSC",
+      "cls": "bsc",
+      "title": "Brainscope Learning Center",
+      "sub": "Cofundador",
+      "items": [
+        {
+          "p": "Una academia de innovación en Zgharta, en el norte del Líbano, que enseña robótica, IA y programación junto con apoyo académico, desde niños hasta jóvenes profesionales. Think • Create • Lead."
+        },
+        {
+          "h": "Mi función",
+          "p": "Plan de estudios, enseñanza técnica y operaciones."
+        }
+      ],
+      "links": true
+    }
+  ]
 }
 };
 
@@ -539,7 +710,22 @@ const EXTRA = {
     ticker: ["Statut : disponible pour du conseil en aviation","Base : Liban","Études en cours : ingénierie de l'IA, USJ","Domaines : automatisation IA, sécurité aéroportuaire, formation technique","Langues : arabe, anglais, français"],
     stats: ["ans dans l'aviation","certifications","langues"],
     skip: "Passer l'intro"
-  }
+  },
+  es: {
+  "ticker": [
+    "Estado: disponible para consultoría aeronáutica",
+    "Base: Líbano",
+    "Estudios actuales: Ingeniería de IA, USJ",
+    "Enfoque: automatización con IA, seguridad aeroportuaria, formación técnica",
+    "Idiomas: árabe, inglés, francés"
+  ],
+  "stats": [
+    "años en aviación",
+    "certificaciones",
+    "idiomas"
+  ],
+  "skip": "Saltar intro"
+}
 };
 /* Years in aviation are counted from 2018 (air traffic controller). */
 const AVIATION_SINCE = 2018;
@@ -614,7 +800,7 @@ function setLang(l){
   document.documentElement.lang = l;
   document.documentElement.dir = l === "ar" ? "rtl" : "ltr";
   document.querySelectorAll("[data-t]").forEach(el => { el.textContent = t[el.dataset.t]; });
-  document.querySelectorAll(".lang button").forEach(b => b.setAttribute("aria-pressed", b.dataset.lang === l));
+  document.getElementById("langSel").value = l;
   document.getElementById("wa").href = "https://wa.me/" + CONTACT.phone.replace(/\D/g,"") + "?text=" + encodeURIComponent(CONTACT.whatsappText[l]);
   document.getElementById("mail").href = "mailto:" + CONTACT.email;
   const sk = document.getElementById("skip"); if(sk) sk.textContent = e.skip;
@@ -623,7 +809,7 @@ function setLang(l){
   if(window.radarResize) radarResize();
 }
 
-document.querySelectorAll(".lang button").forEach(b => b.addEventListener("click", () => setLang(b.dataset.lang)));
+document.getElementById("langSel").addEventListener("change", e => setLang(e.target.value));
 document.getElementById("more").addEventListener("click", () => { certsOpen = !certsOpen; renderCerts(TEXT[lang]); });
 document.getElementById("yr").textContent = new Date().getFullYear();
 
